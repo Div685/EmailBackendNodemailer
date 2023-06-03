@@ -1,6 +1,6 @@
 const expressAsyncHandler = require("express-async-handler");
 const dotenv = require("dotenv");
-const nodemailer = requier("nodemailer");
+const nodemailer = require("nodemailer");
 dotenv.config();
 
 let transporter = nodemailer.createTransport({
@@ -13,7 +13,7 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = expressAsyncHandler(async(req, res) => {
+const sendEmail = expressAsyncHandler( (req, res) => {
   const { name, email, phoneNumber, services, companyName, msg } = req.body;
   console.log(name, email, services);
 
@@ -22,7 +22,7 @@ const sendEmail = expressAsyncHandler(async(req, res) => {
     to: process.env.SMTP_MAIL,
     subject: `Received web inquiry from ${name}`,
     text: "Hello,",
-    html: `<b>Name: ${name}</b> <b>Phone Number: ${phoneNumber}</b> <b>Company Name: ${companyName}</b> <b>${services} ${msg}</b>`,
+    html: `<b>Name: ${name}</b> <b>Phone Number: ${phoneNumber}</b> <b>Company Name: ${companyName}</b> <b>Services requested: ${services} And Message: ${msg}</b>`,
 
   };
 
