@@ -12,7 +12,7 @@ const corsOption = {
     optionSuccessStatus: 200,
 };
 
-app.use(cors()); // Use this after the variable declration
+app.use(cors(corsOption)); // Use this after the variable declration
 
 app.use(express.json()); // tell the server to accept the json data from frontend
 
